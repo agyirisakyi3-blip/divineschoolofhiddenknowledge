@@ -1,0 +1,22 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment and local overrides — never commit these.
+# site-data.js is intentionally tracked: it holds the shared contact details
+# and has no secrets. Put any real API keys or form credentials in a local
+# .env instead and wire them up before deploying.
+.env
+.env.*
