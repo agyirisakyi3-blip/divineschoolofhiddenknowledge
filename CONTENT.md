@@ -50,18 +50,19 @@ separate admissions line or a Ghana toll-free number (0800 XXX XXX), update
 | `name`, `legalName` | Divine Mystical &amp; Ayurvedic College | Your registered name |
 | `tagline` | Where tradition meets evidence | Your line, or remove the key |
 | `established` | 1987 | Founding year |
-| `siteUrl` | `…ayurvedic.edu.in` | **Your real .gh or .com.gh domain** |
-| `email.general` | info@…edu.in | Office inbox on your real domain |
-| `email.admissions` | admissions@…edu.in | Admissions inbox |
-| `email.academics` | academics@…edu.in | Academics inbox |
+| `siteUrl` | `…-college.example` | **Your real .gh or .com.gh domain** |
+| `email.general` | info@…-college.example | Office inbox on your real domain |
+| `email.admissions` | admissions@…-college.example | Admissions inbox |
+| `email.academics` | academics@…-college.example | Academics inbox |
 | `address.line1` / `line2` | empty | Street-level address, if you have one |
 | `geo.latitude` / `geo.longitude` | `null` | Campus coordinates |
 | `hours.display` | Mon–Sat 9:00–17:00 | Real hours |
 | `social.*` | bare platform URLs | Your profile URLs, or delete the key |
-| `accreditation[0..3]` | obvious placeholders | **Only what you actually hold** |
 | `admissions.batchYear` | 2026 | Current batch |
-| `admissions.deadlineLabel` | 31 March 2026 | Real deadline |
-| `admissions.deadlineIso` | 2026-03-31 | Real deadline, `YYYY-MM-DD` |
+| `admissions.deadlineLabel` | Dates to be confirmed | Real deadline |
+| `admissions.deadlineIso` | empty | Real deadline, `YYYY-MM-DD` |
+
+The `accreditation` key has been **deleted**, not filled in. See below.
 
 `geo` is `null`, which makes `main.js` omit the `GeoCoordinates` block from the
 structured data entirely. That is deliberate — it is better to publish no
@@ -69,59 +70,80 @@ coordinates than wrong ones. Add them when you can pin the campus on a map.
 
 ---
 
-## ⚠ Read this before publishing: the site was written for India
+## Accreditation status: settled, and it is the important one
 
-The copy, degrees and regulators across this site assume an Indian Ayurvedic
-college. You have now given a Ghanaian address and number, so a real mismatch
-exists. I have fixed the location and phone everywhere, but I cannot invent
-Ghanaian regulatory facts, so these are still unresolved and they are the
-items most likely to be wrong in front of the public:
+The site was originally written as though this were an accredited Indian
+Ayurvedic college. It is not, and the college is in Ghana. **You have confirmed
+that the college is not accredited.** Every claim to the contrary has been
+removed rather than softened:
 
-1. **Accreditation and recognition.** `accreditation[0..3]` originally claimed
-   affiliation to a state Ayurvedic university, recognition by the National
-   Council for Indian Systems of Medicine, and NAAC 'A+' accreditation. None of
-   that is valid in Ghana. Those values are now obviously-wrong-looking
-   placeholders so nobody can mistake them for real claims. Put your genuine
-   Ghanaian recognition body and registration number in.
+- The four-column credential strip on the home page (affiliation, recognition,
+  accreditation grade, ISO certification) is **gone**.
+- The "Affiliation & accreditation" section on `about.html` is **gone**, replaced
+  by a plain "Where we actually stand" statement.
+- The `accreditation` array in `js/site-data.js` is **deleted**. Do not
+  reinstate it with placeholder text — if you gain real accreditation, put the
+  actual certifying body and registration number in.
+- Programmes were renamed from BAMS / MD Ayurveda to **Professional Diploma in
+  Ayurvedic Medicine** and **Advanced Diploma in Ayurvedic Practice**. Every
+  course name, ID, JSON-LD entry, anchor link, form dropdown and eligibility row
+  was updated to match. Two course IDs changed, so any inbound links to
+  `courses.html#bams` or `#md-ayurveda` will now 404.
+- The home-page FAQ no longer promises registration. It says the honest thing:
+  these awards do **not** on their own entitle the holder to register or
+  practise as a healthcare practitioner, in Ghana or anywhere else.
+- `contact.html` terms repeat the same position, so the disclaimer is not only
+  on the marketing pages.
+- Entry requirements were rewritten as the college's own criteria. The old
+  table deferred to an affiliating university and to Indian qualification
+  titles (10+2, BAMS, GNM, BPT); those are now WASSCE/BECE equivalents and
+  diploma-level equivalents.
+- Testimonial attributions were Ghanaianised and stripped of "Dr." and
+  "BAMS 2014 · Pune" style credentials.
 
-2. **Degree names.** The programmes are called BAMS and MD Ayurveda, and the
-   curriculum copy refers to a prescribed syllabus and an affiliating
-   university. BAMS is the Indian degree title. Ghana does not use it. Either
-   the college awards an Indian-affiliated degree (in which case the site needs
-   to say so plainly and address international applicants) or it awards
-   something else, in which case every course name, the JSON-LD programme list,
-   the application form dropdowns and the FAQ all need renaming. I have not
-   guessed.
+**Why this matters legally.** Advertising a qualification you do not hold is a
+consumer-protection problem in Ghana, and medical-adjacent claims carry
+additional exposure. Publishing the shortfall plainly is both safer and more
+credible than leaving fake credentials for someone to catch.
 
-3. **The regulatory FAQ.** The FAQ on `index.html` used to promise that the
-   degree qualifies holders to register as Ayurvedic practitioners *in India*.
-   It now says requirements differ by country and tells applicants to confirm
-   with the admissions office, because I do not know what a Ghanaian
-   qualification entitles them to do.
+If the college applies for recognition later, update the three `.clarifier`
+blocks — `index.html`, `about.html` and `courses.html` — together, so they
+never contradict each other.
 
-4. **Registration of the word "Ayurveda".** Traditional Medicine regulation in
-   Ghana is administered nationally and differs from India's. Check what the
-   college actually needs before publishing any practice-related claim.
+## Still placeholders — the original India/Ghana mismatches
 
-5. **Cedu / currency.** No fee is published anywhere on this site, so no
-   currency is shown either — nothing to change. If you publish fees later,
-   quote in Ghana cedis (GHS) and confirm what the regulator requires.
+These are resolved as far as I can take them without inventing facts:
 
-6. **Email domain and site URL.** Both still use `.edu.in`. A Ghanaian
-   institution needs a `.gh` or `.com.gh` domain, and the email addresses must
-   match it. Note `data-dm-href` stamps the `mailto:` links at runtime, but the
-   hardcoded fallback `mailto:` values in the HTML still say `example.edu.in`
-   until JavaScript runs.
+1. **Degree names.** Resolved as above: all awards are diplomas and
+   certificates of training issued by the college. If that changes, every
+   course name needs renaming again.
 
-7. **Geography check.** You gave "Central Region". Kasoa is commonly described
-   as being in the Greater Accra Region, close to the Central Region border
-   and roughly 20 km from Accra. I have used your wording exactly as given —
-   please confirm which region the campus is legally and administratively in,
-   because the address appears in the structured data that search engines read.
+2. **The regulatory FAQ.** Rewritten to state plainly that the awards confer no
+   registration entitlement. The intake FAQ on `admissions.html` no longer
+   refers to an affiliating university or a national commission.
 
-8. **Admission dates.** "31 March 2026" came from the Indian academic calendar.
-   Ghanaian intakes usually run differently. Update both `deadlineLabel` and
-   `deadlineIso`.
+3. **Registration of the word "Ayurveda".** Still worth checking. Ghana
+   regulates traditional medicine nationally and differently from India —
+   confirm what the college actually needs to be permitted to call itself an
+   Ayurvedic college and to run these programmes.
+
+4. **Cedu / currency.** No fee is published anywhere on this site, so no
+   currency appears either. If you publish fees later, quote in Ghana cedis
+   (GHS).
+
+5. **Email domain and site URL.** Both now use `.example`, which is reserved by
+   IANA and can never be registered. Nothing resolves — canonical and `og:url`
+   tags point to an unreachable host, and the `mailto:` form fallback will
+   bounce. This must be fixed before launch.
+
+6. **Geography check.** You confirmed **Central Region**, so that is what the
+   site says, including in the structured data. Worth noting that Kasoa is
+   often described as Greater Accra; if the legal registration differs, change
+   `address.state`.
+
+7. **Admission dates.** The inherited "31 March 2026" was an Indian academic
+   calendar date and has been replaced with "Dates to be confirmed". Set both
+   `deadlineLabel` and `deadlineIso` when the real intake date is known.
 
 ### The domain must match in four places
 
@@ -166,9 +188,9 @@ Forms currently on the site:
 
 ### `index.html`
 - Hero stats: `40+ years`, `1,200 alumni`, `60 clinical beds`
-- Credential strip — driven by `accreditation[]` in `site-data.js`
+- Status notice — a `.clarifier` stating the college is not accredited
 - Faculty: Vaidya Dr. S. Raghavan, Prof. Meera Deshmukh, Dr. Anil Vyas
-- Testimonials: Dr. A. Kulkarni, Dr. Farhana Nadeem, R. Sundaram
+- Testimonials: A. Kumi, F. Nartey, R. Sowah
 - Notices: three dated announcements
 
 ### `about.html`
@@ -177,7 +199,7 @@ Forms currently on the site:
 - Founder message (Vaidya Shri Krishna Prasad) and Principal message
 - Leadership grid: four named people
 - Campus stats: 24 faculty, 60 beds, 4 acres, 12 stations, 320 seats
-- Accreditation cards — driven by `accreditation[]`
+- "Where we actually stand" — a `.clarifier` stating the non-accredited status
 
 ### `courses.html`
 Seven programmes. Each card carries a duration, eligibility, mode, seat count
@@ -189,13 +211,22 @@ in writing in each offer letter, and the `#fees` section on `courses.html` is a
 "published on request" block rather than a price list.
 
 If you later decide to publish fees on the site, that is a legal question
-before it is a content one — Indian regulations expect fee information to be
-published accurately and prospectively for each intake. Check the current
-requirements with the affiliating university, then add a table back under
-`courses.html#fees` and a `Fee` row back to each `.spec-list`.
+before it is a content one — check what Ghana's regulator requires for fee
+disclosure, then add a table back under `courses.html#fees` and a `Fee` row back
+to each `.spec-list`.
+
+The page also opens with a `.clarifier` under the heading "What these
+qualifications are" (`#qualification-status`). It is the honest version of what
+used to be an accreditation claim, and it is linked from the eligibility table
+on `admissions.html` and the intake FAQ on `index.html`.
 
 Still placeholder, and still needing replacement: **seat counts**
-(120/30/40/40/30/24) and the BAMS curriculum breakdown.
+(120/30/40/40/30/24) and the curriculum breakdown shown on the professional
+diploma card.
+
+Course IDs that changed during the renaming — fix any inbound links you control:
+- `courses.html#bams` → `#diploma-ayurvedic-medicine`
+- `courses.html#md-ayurveda` → `#advanced-diploma-ayurveda`
 
 The `<script type="application/ld+json">` block in `courses.html` lists the
 seven programme names. Update it if you rename or add a programme.
@@ -205,7 +236,8 @@ seven programme names. Update it if you rename or add a programme.
 - Eligibility table (minimum qualification, subject, min. age)
 - Document checklist
 - Scholarship and hostel details
-- **Important dates table** — eight dates from 15 Dec 2025 to 1 Aug 2026
+- **Important dates table** — placeholder dates; the deadline row now reads
+  "Dates to be confirmed" until you supply real ones
 - Admissions FAQ — five items, mirrored in the `FAQPage` JSON-LD at the top of
   the file. **If you edit a FAQ answer, edit the JSON-LD too**, or Google will
   show stale text.

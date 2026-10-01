@@ -16,12 +16,15 @@ window.DMC = {
   tagline: "Where tradition meets evidence",
   established: "1987",
 
-  /* TODO: confirm this domain is registered to you, then update SITE_URL,
-     the email addresses below, and sitemap.xml / robots.txt together.
-     NOTE: the college is in Ghana, so an .edu.in domain (and any @…edu.in
-     addresses below) is the Indian equivalent and will not be available.
-     Use a .gh or .com.gh domain and matching email addresses. */
-  siteUrl: "https://www.divinemysticalayurvedic.edu.in",
+  /* PLACEHOLDER DOMAIN. `.example` is reserved by IANA and can never be
+     registered, so nothing here resolves and canonical/og:url tags point
+     nowhere. The college has no domain yet.
+
+     TODO before publishing: buy a .gh or .com.gh domain, then update this,
+     the email addresses below, and every <link rel="canonical">,
+     sitemap.xml and robots.txt together. Search engines will penalise the
+     site for canonicals pointing to an unreachable host. */
+  siteUrl: "https://www.divine-ayurvedic-college.example",
 
   /* --- Contact -------------------------------------------------------- */
   phone: {
@@ -35,11 +38,13 @@ window.DMC = {
   },
 
   email: {
-    /* TODO: real inboxes — and see the siteUrl note above. These .edu.in
-       addresses will not work for a Ghanaian institution. */
-    general: "info@divinemysticalayurvedic.edu.in",
-    admissions: "admissions@divinemysticalayurvedic.edu.in",
-    academics: "academics@divinemysticalayurvedic.edu.in"
+    /* TODO: real inboxes. These point at the reserved .example domain and will
+       bounce. Register the domain first, then point these at live addresses.
+       Note the forms fall back to a mailto: built from these values, so
+       submissions are lost until this is fixed. */
+    general: "info@divine-ayurvedic-college.example",
+    admissions: "admissions@divine-ayurvedic-college.example",
+    academics: "academics@divine-ayurvedic-college.example"
   },
 
   address: {
@@ -87,27 +92,29 @@ window.DMC = {
   },
 
   /* --- Accreditation --------------------------------------------------
-     These were written for an Indian college and are NOT valid for Ghana.
-     The placeholders below are deliberately obvious so nobody can mistake
-     them for real claims — replace every value with recognition you actually
-     hold before publishing. Accreditation and registration claims are
-     legally meaningful, and Traditional Medicine regulation differs between
-     Ghana and India: what was true for the old values is not true here.
-  --------------------------------------------------------------------- */
-  accreditation: [
-    { label: "Affiliated to", value: "Add your affiliating institution" },
-    { label: "Recognised by", value: "Add your recognition body" },
-    { label: "Institutional grade", value: "Add your accreditation grade" },
-    { label: "ISO certified", value: "Add your certification" }
-  ],
+     The college is NOT accredited and holds no university affiliation.
 
-  /* --- Admissions ----------------------------------------------------- */
-  /* TODO: real dates and deadline */
+     The accreditation array that used to live here has been removed, along
+     with the four-column credential strip that displayed it. Both had been
+     asserting recognition the college does not hold — including, in an
+     earlier draft, the National Council for Indian Systems of Medicine and
+     NAAC 'A+' accreditation, neither of which is valid in Ghana.
+
+     The site now states its status openly instead, in a .clarifier block on
+     index.html, about.html and courses.html. Do not reintroduce a
+     credentials strip unless every value is a real, verifiable award.
+  --------------------------------------------------------------------- */
+
+  /* --- Admissions -----------------------------------------------------
+     TODO: these dates were placeholders carried over from an earlier draft.
+     Confirm the real intake deadline with the admissions office, or leave
+     them unset. A published deadline that has already passed — or one that
+     was never real — is worse than no date at all. */
   admissions: {
     batchYear: "2026",
     applicationsOpen: true,
-    deadlineLabel: "31 March 2026",
-    deadlineIso: "2026-03-31"
+    deadlineLabel: "Dates to be confirmed",
+    deadlineIso: ""
   },
 
   /* --- Forms ----------------------------------------------------------

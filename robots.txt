@@ -6,4 +6,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.divinemysticalayurvedic.edu.in/sitemap.xml
+Sitemap: https://www.divine-ayurvedic-college.example/sitemap.xml

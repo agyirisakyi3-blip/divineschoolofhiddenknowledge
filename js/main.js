@@ -72,7 +72,7 @@
       url: data.siteUrl,
       foundingDate: data.established,
       description:
-        "Ayurvedic college offering BAMS, MD and diploma programmes in " +
+        "Ayurvedic college offering diplomas and certificates of training in " +
         "Ayurveda, Panchakarma, herbal pharmacy and yoga therapy.",
       telephone: data.phone && data.phone.main,
       email: data.email && data.email.general,

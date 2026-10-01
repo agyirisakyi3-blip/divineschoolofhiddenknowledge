@@ -1190,44 +1190,49 @@ body[data-nav-open="true"] {
   margin-top: var(--sp-2);
 }
 
-/* Credential strip */
+/* Status notice band — carries the "not accredited" statement on the home
+   page. The old four-column credential strip was removed because it displayed
+   accreditation claims the college does not hold. */
 .credentials {
   border-bottom: 1px solid var(--border);
   background: var(--paper);
 }
 
-.credentials .wrap {
+/* Standing notice — used where the site has to be explicit about what it is
+   and is not, e.g. the status of the qualifications on courses.html. */
+.clarifier {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-4);
+  align-items: start;
+  padding: var(--sp-5) var(--sp-6);
+  margin-bottom: var(--sp-7);
+  background: var(--sand-100);
+  border: 1px solid var(--gold-600);
+  border-left: 3px solid var(--gold-600);
+  border-radius: var(--radius);
 }
 
-.credential {
-  padding: var(--sp-6) var(--sp-4);
-  text-align: center;
-  border-left: 1px solid var(--border);
-}
-
-.credential:first-child {
-  border-left: 0;
-}
-
-.credential svg {
+.clarifier svg {
   width: 1.4rem;
   height: 1.4rem;
-  margin: 0 auto var(--sp-2);
-  color: var(--gold-600);
+  margin-top: 0.15rem;
+  color: var(--maroon-700);
+  flex-shrink: 0;
 }
 
-.credential strong {
-  display: block;
+.clarifier p {
+  margin: 0;
   font-size: var(--step-sm);
-  color: var(--ink-900);
-  line-height: 1.35;
+  color: var(--ink-700);
 }
 
-.credential span {
-  font-size: var(--step-xs);
-  color: var(--text-muted);
+.clarifier p + p {
+  margin-top: var(--sp-3);
+}
+
+.clarifier strong {
+  color: var(--ink-900);
 }
 
 /* 10 Cards & grids ========================================================== */
@@ -2371,18 +2376,6 @@ figure {
   .site-footer__top {
     grid-template-columns: 1fr 1fr;
   }
-
-  .credentials .wrap {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .credential:nth-child(3) {
-    border-left: 0;
-  }
-
-  .credential:nth-child(n + 3) {
-    border-top: 1px solid var(--border);
-  }
 }
 
 @media (max-width: 900px) {
@@ -2504,18 +2497,7 @@ figure {
     height: 46px;
   }
 
-  .credentials .wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .credential {
-    border-left: 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .credential:first-child {
-    border-top: 0;
-  }
+  
 
   .form-grid {
     grid-template-columns: 1fr;
