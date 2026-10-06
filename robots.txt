@@ -1,9 +1,0 @@
-# robots.txt — Divine Mystical & Ayurvedic College
-#
-# TODO: replace the domain below with your real one. It must match
-# SITE_URL in js/site-data.js and the canonical tags on every page.
-
-User-agent: *
-Allow: /
-
-Sitemap: https://www.divine-ayurvedic-college.example/sitemap.xml
